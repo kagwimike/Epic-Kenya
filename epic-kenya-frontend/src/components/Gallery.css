@@ -1,0 +1,57 @@
+.gallery-wrapper {
+  padding: 20px;
+  text-align: center;
+}
+
+.view-toggle {
+  margin-bottom: 10px;
+}
+
+.image-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  scroll-snap-type: x mandatory;
+  padding: 10px;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.image-container {
+  min-width: 300px;
+  scroll-snap-align: center;
+  position: relative;
+}
+
+.gallery-image {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.like-comment-section {
+  margin-top: 10px;
+}
+
+.like-comment-section input {
+  padding: 5px;
+  width: 80%;
+}
+
+.gallery-controls {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manual-nav button {
+  margin: 0 5px;
+  padding: 4px 10px;
+}

@@ -1,0 +1,33 @@
+.destination-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.media-container {
+  position: relative;
+  margin-top: 12px;
+}
+
+.destination-thumbnail {
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.destination-video {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.click-text {
+  margin-top: 6px;
+  font-style: italic;
+  color: #555;
+}

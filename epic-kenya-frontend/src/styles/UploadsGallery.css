@@ -1,0 +1,46 @@
+.uploads-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.upload-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.upload-card:hover {
+  transform: scale(1.02);
+}
+
+.upload-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.upload-info {
+  padding: 15px;
+}
+
+.caption {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.no-uploads {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #888;
+  padding: 40px 0;
+}

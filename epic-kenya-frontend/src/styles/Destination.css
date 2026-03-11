@@ -1,0 +1,130 @@
+/* General Page Layout */
+.destination-page {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  background-color: #fffdf5;
+}
+
+/* 🔥 Hero Banner */
+.destination-hero {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 12px;
+}
+
+.destination-title {
+  color: #fff;
+  font-size: 3.2rem;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+.animated-title {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Main Content Sections */
+.destination-content {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.destination-section {
+  margin-bottom: 50px;
+}
+
+.destination-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  background: #fff5e1;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* ⭐ Activities List */
+.destination-activities {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.destination-activities li {
+  background-color: #e0f7e9;
+  padding: 12px 16px;
+  border-left: 5px solid #2b9348;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* 🎥 Video Section */
+.destination-video iframe {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 🗺️ Map Embed Section */
+.destination-map iframe {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 📸 Image Upload + Gallery */
+.destination-section h2 {
+  margin-bottom: 16px;
+  color: #222;
+  font-size: 1.8rem;
+  position: relative;
+}
+
+.destination-section h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: #ff7e5f;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  border-radius: 2px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .destination-title {
+    font-size: 2.2rem;
+  }
+
+  .destination-hero {
+    height: 300px;
+  }
+
+  .destination-description {
+    font-size: 1rem;
+  }
+}

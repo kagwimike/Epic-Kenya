@@ -1,0 +1,173 @@
+.edit-profile-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.edit-profile-container h2 {
+  text-align: center;
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+form label {
+  display: block;
+  margin: 14px 0 5px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+form input[type="file"] {
+  padding: 8px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #005ecb;
+}
+
+.message {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #d32f2f;
+}
+
+.profile-preview {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  margin-bottom: 10px;
+}
+
+.remove-btn {
+  background-color: #e53935;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #c62828;
+}
+
+/* 🌐 Responsive tweaks */
+@media screen and (max-width: 600px) {
+  .edit-profile-container {
+    padding: 20px 15px;
+  }
+
+  .edit-profile-container h2 {
+    font-size: 1.5rem;
+  }
+
+  form label {
+    font-size: 0.9rem;
+  }
+
+  form input,
+  button[type="submit"] {
+    font-size: 0.95rem;
+  }
+
+  .remove-btn {
+    font-size: 0.85rem;
+    padding: 7px 12px;
+  }
+
+  .profile-preview img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Fade-in form container */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.edit-profile-container {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+/* Focus animation for inputs */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"] {
+  transition: all 0.3s ease;
+}
+
+form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+/* Submit button hover animation */
+button[type="submit"] {
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.02);
+  background-color: #005ecb;
+}
+
+/* Remove button hover animation */
+.remove-btn {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.remove-btn:hover {
+  transform: scale(1.02);
+  background-color: #b71c1c;
+}

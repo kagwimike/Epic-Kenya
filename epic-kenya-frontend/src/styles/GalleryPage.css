@@ -1,0 +1,13 @@
+/* src/styles/GalleryPage.css */
+.gallery-page {
+    text-align: center;
+    padding: 40px;
+    background-color: #222;
+    color: white;
+  }
+  
+  .magic-text {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  

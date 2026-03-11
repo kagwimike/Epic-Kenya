@@ -1,0 +1,21 @@
+.dashboard-container {
+  padding: 2rem;
+  background: #12121a;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.dashboard-title {
+  font-size: 36px;
+  margin-bottom: 2rem;
+  text-align: center;
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}

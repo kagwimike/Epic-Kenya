@@ -12,6 +12,11 @@ const ImageUploadForm = ({ destination, onUploadSuccess }) => {
 
   const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
+  /*
+  |--------------------------------------------------------------------------
+  | HANDLE FILE SELECTION
+  |--------------------------------------------------------------------------
+  */
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -21,12 +26,19 @@ const ImageUploadForm = ({ destination, onUploadSuccess }) => {
     }
   };
 
+  /*
+  |--------------------------------------------------------------------------
+  | HANDLE FORM SUBMISSION
+  |--------------------------------------------------------------------------
+  */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!image) return setMessage("❗ Please select an image to upload.");
+    if (!image) {
+      setMessage("❗ Please select an image to upload.");
+      return;
+    }
 
-    // Normalize the destination string for consistency
     const normalizedDestination = destination
       ? normalizeDestination(destination.trim())
       : "unknown";
@@ -39,7 +51,8 @@ const ImageUploadForm = ({ destination, onUploadSuccess }) => {
     formData.append("destination", normalizedDestination);
 
     try {
-      const res = await axios.post(
+      // Only use res if needed (clean for linter)
+      await axios.post(
         `http://localhost:5000/api/gallery/upload${isStrict ? "?strict=true" : ""}`,
         formData,
         {
@@ -58,10 +71,17 @@ const ImageUploadForm = ({ destination, onUploadSuccess }) => {
       if (onUploadSuccess) onUploadSuccess();
     } catch (error) {
       console.error("Upload error:", error.response?.data || error.message);
-      setMessage(`❌ Upload failed: ${error.response?.data?.message || "Please try again."}`);
+      setMessage(
+        `❌ Upload failed: ${error.response?.data?.message || "Please try again."}`
+      );
     }
   };
 
+  /*
+  |--------------------------------------------------------------------------
+  | RENDER COMPONENT
+  |--------------------------------------------------------------------------
+  */
   return (
     <div style={{ maxWidth: "500px", margin: "auto", padding: "1rem" }}>
       <h2>
@@ -73,17 +93,22 @@ const ImageUploadForm = ({ destination, onUploadSuccess }) => {
 
       <form onSubmit={handleSubmit}>
         <input type="file" accept="image/*" onChange={handleFileChange} required />
-        <br /><br />
+        <br />
+        <br />
 
         {preview && (
           <img
             src={preview}
             alt="Preview"
             width="250"
-            style={{ borderRadius: "10px", boxShadow: "0 4px 10px rgba(0,0,0,0.2)" }}
+            style={{
+              borderRadius: "10px",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+            }}
           />
         )}
-        <br /><br />
+        <br />
+        <br />
 
         <textarea
           placeholder="Caption (optional)"
@@ -97,15 +122,24 @@ const ImageUploadForm = ({ destination, onUploadSuccess }) => {
             resize: "vertical",
           }}
         />
-        <br /><br />
+        <br />
+        <br />
 
-        <button type="submit" style={{ padding: "10px 20px", cursor: "pointer" }}>
+        <button
+          type="submit"
+          style={{ padding: "10px 20px", cursor: "pointer" }}
+        >
           Upload
         </button>
       </form>
 
       {message && (
-        <p style={{ marginTop: "1rem", color: message.startsWith("✅") ? "green" : "red" }}>
+        <p
+          style={{
+            marginTop: "1rem",
+            color: message.startsWith("✅") ? "green" : "red",
+          }}
+        >
           {message}
         </p>
       )}

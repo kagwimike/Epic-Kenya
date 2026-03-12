@@ -55,7 +55,7 @@ const Gallery = ({ destination }) => {
 
   /*
   |--------------------------------------------------------------------------
-  | RESET INDEX IF IMAGES CHANGE (important after delete)
+  | RESET INDEX IF IMAGES CHANGE
   |--------------------------------------------------------------------------
   */
 
@@ -64,12 +64,6 @@ const Gallery = ({ destination }) => {
       setCurrentIndex(0);
     }
   }, [images.length, currentIndex]);
-
-  /*
-  |--------------------------------------------------------------------------
-  | CURRENT IMAGE
-  |--------------------------------------------------------------------------
-  */
 
   const currentImage = images[currentIndex];
 
@@ -117,11 +111,7 @@ const Gallery = ({ destination }) => {
   */
 
   if (loading) {
-    return (
-      <div className="loader">
-        Loading Masterpieces...
-      </div>
-    );
+    return <div className="loader">Loading Masterpieces...</div>;
   }
 
   /*
@@ -162,6 +152,32 @@ const Gallery = ({ destination }) => {
 
           <div className="image-overlay-info">
             <h3>{currentImage.caption}</h3>
+
+            {/* IMAGE ACTIONS */}
+            {currentUser?.userId === currentImage.userId && (
+              <div className="image-actions">
+                <button
+                  className="edit-btn"
+                  onClick={() =>
+                    editImage(currentImage.id, {
+                      caption: prompt(
+                        "Edit caption",
+                        currentImage.caption
+                      ),
+                    })
+                  }
+                >
+                  Edit
+                </button>
+
+                <button
+                  className="delete-btn"
+                  onClick={handleDeleteImage}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -188,9 +204,7 @@ const Gallery = ({ destination }) => {
 
           {/* COMMENTS */}
           <div className="comments-section">
-
             <div className="comments-scroll-area">
-
               {currentImage.comments?.length ? (
                 currentImage.comments.map((comment) => (
                   <CommentItem
@@ -203,13 +217,11 @@ const Gallery = ({ destination }) => {
                   />
                 ))
               ) : (
-                <p className="no-comments"></p>
+                <p className="no-comments">No comments yet</p>
               )}
-
             </div>
 
             {/* COMMENT FORM */}
-
             <form
               className="modern-comment-form"
               onSubmit={handleSubmitComment}
@@ -228,7 +240,6 @@ const Gallery = ({ destination }) => {
                 <FaPaperPlane />
               </button>
             </form>
-
           </div>
 
         </div>

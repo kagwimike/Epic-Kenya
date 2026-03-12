@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import LiveChat from "./LiveChat";
-import NotificationBell from "./Notifications/NotificationBell";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
@@ -12,15 +11,30 @@ const Navbar = () => {
   const [showChat, setShowChat] = useState(false);
   const navigate = useNavigate();
 
+  /*
+  |--------------------------------------------------------------------------
+  | Toggle Destinations Dropdown
+  |--------------------------------------------------------------------------
+  */
   const toggleDropdown = () => {
-    setShowDestinations(!showDestinations);
+    setShowDestinations((prev) => !prev);
   };
 
+  /*
+  |--------------------------------------------------------------------------
+  | Check Authentication on Mount
+  |--------------------------------------------------------------------------
+  */
   useEffect(() => {
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
     setIsAuthenticated(!!token);
   }, []);
 
+  /*
+  |--------------------------------------------------------------------------
+  | Handle Logout
+  |--------------------------------------------------------------------------
+  */
   const handleLogout = () => {
     localStorage.removeItem("token");
     sessionStorage.removeItem("token");
@@ -29,11 +43,20 @@ const Navbar = () => {
     setTimeout(() => navigate("/login"), 2000);
   };
 
+  /*
+  |--------------------------------------------------------------------------
+  | Render Navbar
+  |--------------------------------------------------------------------------
+  */
   return (
     <>
       <nav className="navbar">
         <ul className="nav-list">
-          <li><Link to="/" className="nav-item">Home</Link></li>
+          <li>
+            <Link to="/" className="nav-item">
+              Home
+            </Link>
+          </li>
 
           <li
             className="nav-item dropdown"
@@ -50,10 +73,8 @@ const Navbar = () => {
               </ul>
             )}
           </li>
-          
-          <li><Link to="/about">About</Link></li>
 
-
+          <li><Link to="/about" className="nav-item">About</Link></li>
           <li><Link to="/gallery" className="nav-item">Gallery</Link></li>
 
           {!isAuthenticated ? (
@@ -62,26 +83,32 @@ const Navbar = () => {
               <li><Link to="/signup" className="nav-item">Sign Up</Link></li>
             </>
           ) : (
-            <li className="nav-item" onClick={handleLogout} style={{ cursor: "pointer" }}>
+            <li
+              className="nav-item"
+              onClick={handleLogout}
+              style={{ cursor: "pointer" }}
+            >
               Logout
             </li>
           )}
         </ul>
 
-        {/* Icons on top-right */}
+        {/* Top-right icons */}
         <div className="navbar-icons">
           {isAuthenticated && (
-            <>
-              {/* <div onClick={() => setShowChat(prev => !prev)} className="chat-icon" title="Live Chat">
-                💬
-              </div> */}
-              {/* <NotificationBell loggedInUserId={"admin"} /> */}
-            </>
+            <div
+              onClick={() => setShowChat((prev) => !prev)}
+              className="chat-icon"
+              title="Live Chat"
+              style={{ cursor: "pointer" }}
+            >
+              💬
+            </div>
           )}
         </div>
       </nav>
 
-      {/* Live Chat Component */}
+      {/* Live Chat */}
       {showChat && <LiveChat />}
 
       <ToastContainer />
